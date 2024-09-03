@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ghIRoqnCV0s=",
+  "dgSpecHash": "T3uOtsCNknY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\UIS\\Desktop\\MoviesApi\\MoviesApi.csproj",
+  "projectFilePath": "D:\\MoviesApi\\MoviesApi\\MoviesApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\UIS\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\UIS\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

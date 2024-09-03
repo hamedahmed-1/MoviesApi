@@ -2444,11 +2444,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\UIS\\Desktop\\MoviesApi\\MoviesApi.csproj",
+      "projectUniqueName": "D:\\MoviesApi\\MoviesApi\\MoviesApi.csproj",
       "projectName": "MoviesApi",
-      "projectPath": "C:\\Users\\UIS\\Desktop\\MoviesApi\\MoviesApi.csproj",
+      "projectPath": "D:\\MoviesApi\\MoviesApi\\MoviesApi.csproj",
       "packagesPath": "C:\\Users\\UIS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\UIS\\Desktop\\MoviesApi\\obj\\",
+      "outputPath": "D:\\MoviesApi\\MoviesApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\UIS\\AppData\\Roaming\\NuGet\\NuGet.Config",

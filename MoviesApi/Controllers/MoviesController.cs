@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MoviesApi.Dtos;
 using MoviesApi.Models;
 
@@ -11,14 +12,97 @@ namespace MoviesApi.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        private new List<string> _allowedExtensions = new List<string> { ".jpg", ".png" };
+
+        private long _maxAllowedPosterSize = 1048576;
         public MoviesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllasync()
+        {
+            var movies = await _context.Movies
+                .OrderByDescending(x => x.Rate)
+                .Include(m => m.Genre)
+                .Select(m => new MovieDetailsDto
+                {
+                    Id = m.Id,
+                    GenreId = m.GenreId,
+                    GenreName = m.Genre.Name,
+                    Poster = m.Poster,
+                    Rate = m.Rate,
+                    Storeline = m.Storeline,
+                    Title = m.Title,
+                    Year = m.Year
+                })
+                .ToListAsync();
+
+            return Ok(movies);
+        }
+
+        [HttpGet("id")]
+        public async Task<IActionResult> GetByIdAsync(int id)
+        {
+            var movie = await _context.Movies.Include(m => m.Genre).SingleOrDefaultAsync(m => m.Id == id);
+
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            var dto = new MovieDetailsDto
+            {
+                Id = movie.Id,
+                GenreId = movie.GenreId,
+                GenreName = movie.Genre.Name,
+                Poster = movie.Poster,
+                Rate = movie.Rate,
+                Storeline = movie.Storeline,
+                Title = movie.Title,
+                Year = movie.Year
+            };
+            return Ok(dto);
+        }
+
+        [HttpGet("GetByGenreId")]
+        public async Task<IActionResult> GetByGenreIdAsync(byte genreId)
+        {
+            var movies = await _context.Movies
+                .Where(m => m.GenreId == genreId)
+                .OrderByDescending(x => x.Rate)
+                .Include(m => m.Genre)
+                .Select(m => new MovieDetailsDto
+                {
+                    Id = m.Id,
+                    GenreId = m.GenreId,
+                    GenreName = m.Genre.Name,
+                    Poster = m.Poster,
+                    Rate = m.Rate,
+                    Storeline = m.Storeline,
+                    Title = m.Title,
+                    Year = m.Year
+                })
+                .ToListAsync();
+
+            return Ok(movies);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromForm]MovieDto dto)
         {
+            if (!_allowedExtensions.Contains(Path.GetExtension(dto.Poster.FileName).ToLower()))
+                return BadRequest("Only .png and .jpg images are allowed");
+
+            if (dto.Poster.Length > _maxAllowedPosterSize)
+                return BadRequest("Max allowed size for poster is 1MB");
+
+            var isValidGenre = await _context.Genres.AnyAsync(g => g.Id == dto.GenreId);
+
+            if (!isValidGenre)
+                return BadRequest("Invalid genre ID!");
+
             using var dataStream = new MemoryStream();
 
             await dto.Poster.CopyToAsync(dataStream);
