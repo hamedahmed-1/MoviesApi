@@ -10,7 +10,7 @@ namespace MoviesApi.Dtos
         public double Rate { get; set; }
         [MaxLength(length: 2500)]
         public string Storeline { get; set; }
-        public IFormFile Poster { get; set; }
+        public IFormFile? Poster { get; set; }
         public byte GenreId { get; set; }
     }
 }
