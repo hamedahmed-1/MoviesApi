@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MoviesApi\\MoviesApi\\MoviesApi.csproj": {}
+    "D:\\My Projects\\MoviesApi\\MoviesApi\\MoviesApi.csproj": {}
   },
   "projects": {
-    "D:\\MoviesApi\\MoviesApi\\MoviesApi.csproj": {
+    "D:\\My Projects\\MoviesApi\\MoviesApi\\MoviesApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MoviesApi\\MoviesApi\\MoviesApi.csproj",
+        "projectUniqueName": "D:\\My Projects\\MoviesApi\\MoviesApi\\MoviesApi.csproj",
         "projectName": "MoviesApi",
-        "projectPath": "D:\\MoviesApi\\MoviesApi\\MoviesApi.csproj",
+        "projectPath": "D:\\My Projects\\MoviesApi\\MoviesApi\\MoviesApi.csproj",
         "packagesPath": "C:\\Users\\UIS\\.nuget\\packages\\",
-        "outputPath": "D:\\MoviesApi\\MoviesApi\\obj\\",
+        "outputPath": "D:\\My Projects\\MoviesApi\\MoviesApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 24.1\\Components\\Offline Packages"
+        ],
         "configFilePaths": [
           "C:\\Users\\UIS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.1.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\DevExpress 24.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -46,7 +51,25 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.33, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.33, )"
+            },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.33, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.33, )"
             },
@@ -60,9 +83,17 @@
               "target": "Package",
               "version": "[6.0.33, )"
             },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.17, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             }
           },
           "imports": [

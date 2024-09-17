@@ -27,10 +27,11 @@ namespace MoviesApi.Services
             return movie;
         }
 
-        public async Task<IEnumerable<Movie>> GetAll()
+        public async Task<IEnumerable<Movie>> GetAll(byte genreId = 0)
         {
             return await _context.Movies
-                            .OrderByDescending(x => x.Rate)
+                            .Where(m => m.GenreId == genreId || genreId == 0)
+                            .OrderByDescending(m => m.Rate)
                             .Include(m => m.Genre)
                             .ToListAsync();
         }
